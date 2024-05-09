@@ -1,38 +1,14 @@
-# Welcome to Remix!
+# Browser Push Notification Example
 
-- [Remix Docs](https://remix.run/docs)
+This project demonstrates how to implement browser-based push notifications using Remix Run as a full-stack framework and native web APIs.
 
-## Development
+## Features
 
-From your terminal:
+- **Push Notifications**: Users can receive push notifications directly in their browser.
+- **Full-Stack Implementation**: Utilizes Remix Run for both front-end and back-end development.
 
-```sh
-npm run dev
+## Installation
+
+```bash
+npm install && npm run dev
 ```
-
-This starts your app in development mode, rebuilding assets on file changes.
-
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
