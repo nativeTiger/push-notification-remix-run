@@ -10,6 +10,9 @@ interface PushSubscriptionJSON {
   };
 }
 
+/**
+ * Save push subscriptions to the database.
+ */
 async function saveSubscriptions({ request }: { request: Request }) {
   const pushSubscription = (await request.json()) as PushSubscriptionJSON;
 
@@ -28,6 +31,9 @@ async function saveSubscriptions({ request }: { request: Request }) {
   });
 }
 
+/**
+ * Send push notifications to subscribed clients.
+ */
 async function sendSubscriptions() {
   webpush.setVapidDetails(
     `mailto:${process.env.VAPID_EMAIL}`,
@@ -65,6 +71,7 @@ async function sendSubscriptions() {
         await webpush.sendNotification(subscriptions, payload);
       }
     } catch (error: any) {
+       // If subscription is not valid (410 status code), remove it from database
       if (error.statusCode === 410) {
         await prismadb.pushSubscription.delete({
           where: { id: subscription.id },

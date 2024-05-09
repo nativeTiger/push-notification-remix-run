@@ -1,6 +1,9 @@
-const PUBLIC_VAPID_KEY =
-  "BEYti6YuNcWHOTXuuZgFzIcdr2eZZ8m2YMmtIsxWRT-m_rUBcXGK3JaLCIZacYVmoBBu-l2KsNDA9Vyly2EhZSI";
+const PUBLIC_VAPID_KEY = "YOUR PUBLIC VAPID KEY";
 
+/**
+ * convert a base64 string to a Uint8Array
+ * @param {*} base64String
+ */
 function urlBase64ToUint8Array(base64String) {
   const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
@@ -15,6 +18,10 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
+/**
+ * Save the subscription to the server
+ * @param {*} subscription
+ */
 async function saveSubscription(subscription) {
   try {
     const response = await fetch(
@@ -39,6 +46,7 @@ async function saveSubscription(subscription) {
 
 self.addEventListener("install", (event) => {
   console.log("installing…", event);
+  // Skip waiting to activate the service worker immediately
   self.skipWaiting();
 });
 
